@@ -72,6 +72,23 @@ class LinkedList {
       this.tail = currentNode;
     }
   }
+
+  find(value) {
+    if (!this.head) {
+      return null;
+    }
+
+    let currentNode = this.head;
+
+    while (currentNode) {
+      if (currentNode.value === value) {
+        return currentNode;
+      } 
+      currentNode = currentNode.next;
+    }
+
+    return null;
+  }
 }
 
 const linkedList = new LinkedList();
@@ -100,3 +117,17 @@ console.log(linkedList.toArray());
 
 console.log("linkedList head ", linkedList.head);
 console.log("linkedList tail ", linkedList.tail);
+
+linkedList.append({
+  age: 24,
+  job: "engineer",
+});
+
+console.log(linkedList.find(1));
+
+console.log(
+  linkedList.find({
+    age: 24,
+    job: "engineer",
+  })
+); //can't find if node's type is object
