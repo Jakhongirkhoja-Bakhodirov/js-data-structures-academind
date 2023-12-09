@@ -37,6 +37,41 @@ class LinkedList {
     }
     return elements;
   }
+
+  delete(value) {
+    if (!this.head) {
+      return null;
+    }
+
+    while (
+      (this.head && this.head.value === value) ||
+      JSON.stringify(this.head.value) === JSON.stringify(value)
+    ) {
+      this.head = this.head.next;
+    }
+
+    let currentNode = this.head;
+
+    while (currentNode.next) {
+      if (currentNode.next.value === value) {
+        currentNode.next = currentNode.next.next;
+      } else if (
+        typeof currentNode.next.value === "object" &&
+        JSON.stringify(currentNode.next.value) == JSON.stringify(value)
+      ) {
+        currentNode.next = currentNode.next.next;
+      } else {
+        currentNode = currentNode.next;
+      }
+    }
+
+    if (
+      this.tail.value === value ||
+      JSON.stringify(this.head.value) === JSON.stringify(value)
+    ) {
+      this.tail = currentNode;
+    }
+  }
 }
 
 const linkedList = new LinkedList();
@@ -47,7 +82,19 @@ linkedList.append({
   firstName: "Doe",
   lastName: "John",
 });
+linkedList.append("last");
 linkedList.prepend([1, 23, 4, 5]);
+linkedList.prepend([1, 23, 4, 5]);
+
+console.log(linkedList.toArray());
+
+// linkedList.delete([1, 23, 4, 5]);
+// linkedList.delete("hello world");
+linkedList.delete({
+  firstName: "Doe",
+  lastName: "John",
+}); // delete object used JSON.stringfy() to compare objects
+linkedList.delete("last"); // delete tail node
 
 console.log(linkedList.toArray());
 
