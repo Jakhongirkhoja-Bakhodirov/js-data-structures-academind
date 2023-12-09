@@ -83,7 +83,9 @@ class LinkedList {
     while (currentNode) {
       if (currentNode.value === value) {
         return currentNode;
-      } 
+      } else if (JSON.stringify(currentNode.value) === JSON.stringify(value)) {
+        return currentNode;
+      }
       currentNode = currentNode.next;
     }
 
