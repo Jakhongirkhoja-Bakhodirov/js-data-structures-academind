@@ -91,6 +91,14 @@ class LinkedList {
 
     return null;
   }
+
+  insertAfter(value, afterValue) {
+    const existingNode = this.find(afterValue);
+    if (existingNode) {
+      const newNode = { value: value, next: existingNode.next };
+      existingNode.next = newNode;
+    }
+  }
 }
 
 const linkedList = new LinkedList();
@@ -117,19 +125,28 @@ linkedList.delete("last"); // delete tail node
 
 console.log(linkedList.toArray());
 
-console.log("linkedList head ", linkedList.head);
-console.log("linkedList tail ", linkedList.tail);
+// console.log("linkedList head ", linkedList.head);
+// console.log("linkedList tail ", linkedList.tail);
 
 linkedList.append({
   age: 24,
   job: "engineer",
 });
 
-console.log(linkedList.find(1));
+// console.log(linkedList.find(1));
 
-console.log(
-  linkedList.find({
-    age: 24,
-    job: "engineer",
-  })
-); //can't find if node's type is object
+// console.log(
+//   linkedList.find({
+//     age: 24,
+//     job: "engineer",
+//   })
+// ); //can't find if node's type is object
+
+linkedList.insertAfter("SWE", {
+  age: 24,
+  job: "engineer",
+});
+
+linkedList.insertAfter([1, 2], [1, 23, 4, 5]);
+
+console.log(linkedList.toArray());
