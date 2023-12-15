@@ -10,6 +10,14 @@ class Stack extends LinkedList {
   }
 
   pop() {
-    
+    return this.list.deleteHead();
+  }
+
+  isEmpty() {
+    return !this.list.head;
+  }
+
+  toArray() {
+    return this.list.toArray();
   }
 }
