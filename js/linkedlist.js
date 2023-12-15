@@ -1,4 +1,4 @@
-class LinkedList {
+export class LinkedList {
   constructor() {
     this.head = null; // First element of the list
     this.tail = null; // Last element of the list
@@ -71,6 +71,17 @@ class LinkedList {
     ) {
       this.tail = currentNode;
     }
+  }
+
+  deleteHead() {
+    if (!this.head) {
+      return null;
+    }
+    const deletedItem = this.head;
+    if (this.head.next) {
+      this.head = this.head.next;
+    }
+    return deletedItem;
   }
 
   find(value) {
