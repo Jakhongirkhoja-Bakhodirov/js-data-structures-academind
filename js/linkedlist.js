@@ -80,6 +80,9 @@ export class LinkedList {
     const deletedItem = this.head;
     if (this.head.next) {
       this.head = this.head.next;
+    } else {
+      this.head = null;
+      this.tail = null;
     }
     return deletedItem;
   }
