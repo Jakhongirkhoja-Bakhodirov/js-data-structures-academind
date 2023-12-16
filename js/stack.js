@@ -1,6 +1,6 @@
-import { LinkedList } from "./linkedlist";
+import { LinkedList } from "./linkedlist.js";
 
-class Stack extends LinkedList {
+class Stack {
   constructor() {
     this.list = new LinkedList();
   }
@@ -21,3 +21,8 @@ class Stack extends LinkedList {
     return this.list.toArray();
   }
 }
+
+const stack = new Stack();
+stack.push("Add first element");
+stack.push("Add second element");
+console.log(stack);

@@ -115,52 +115,52 @@ export class LinkedList {
   }
 }
 
-const linkedList = new LinkedList();
+// const linkedList = new LinkedList();
 
-linkedList.append(1);
-linkedList.append("hello world");
-linkedList.append({
-  firstName: "Doe",
-  lastName: "John",
-});
-linkedList.append("last");
-linkedList.prepend([1, 23, 4, 5]);
-linkedList.prepend([1, 23, 4, 5]);
+// linkedList.append(1);
+// linkedList.append("hello world");
+// linkedList.append({
+//   firstName: "Doe",
+//   lastName: "John",
+// });
+// linkedList.append("last");
+// linkedList.prepend([1, 23, 4, 5]);
+// linkedList.prepend([1, 23, 4, 5]);
 
-console.log(linkedList.toArray());
+// console.log(linkedList.toArray());
 
-// linkedList.delete([1, 23, 4, 5]);
-// linkedList.delete("hello world");
-linkedList.delete({
-  firstName: "Doe",
-  lastName: "John",
-}); // delete object used JSON.stringfy() to compare objects
-linkedList.delete("last"); // delete tail node
+// // linkedList.delete([1, 23, 4, 5]);
+// // linkedList.delete("hello world");
+// linkedList.delete({
+//   firstName: "Doe",
+//   lastName: "John",
+// }); // delete object used JSON.stringfy() to compare objects
+// linkedList.delete("last"); // delete tail node
 
-console.log(linkedList.toArray());
+// console.log(linkedList.toArray());
 
-// console.log("linkedList head ", linkedList.head);
-// console.log("linkedList tail ", linkedList.tail);
+// // console.log("linkedList head ", linkedList.head);
+// // console.log("linkedList tail ", linkedList.tail);
 
-linkedList.append({
-  age: 24,
-  job: "engineer",
-});
+// linkedList.append({
+//   age: 24,
+//   job: "engineer",
+// });
 
-// console.log(linkedList.find(1));
+// // console.log(linkedList.find(1));
 
-// console.log(
-//   linkedList.find({
-//     age: 24,
-//     job: "engineer",
-//   })
-// ); //can't find if node's type is object
+// // console.log(
+// //   linkedList.find({
+// //     age: 24,
+// //     job: "engineer",
+// //   })
+// // ); //can't find if node's type is object
 
-linkedList.insertAfter("SWE", {
-  age: 24,
-  job: "engineer",
-});
+// linkedList.insertAfter("SWE", {
+//   age: 24,
+//   job: "engineer",
+// });
 
-linkedList.insertAfter([1, 2], [1, 23, 4, 5]);
+// linkedList.insertAfter([1, 2], [1, 23, 4, 5]);
 
-console.log(linkedList.toArray());
+// console.log(linkedList.toArray());
