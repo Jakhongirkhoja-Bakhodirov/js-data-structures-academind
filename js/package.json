@@ -1,0 +1,13 @@
+{
+  "name": "js data structures",
+  "version": "1.0.0",
+  "description": "",
+  "main": "array.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Jakhongir Bakhodirov",
+  "type": "module",
+  "license": "ISC"
+}
