@@ -13,3 +13,17 @@ function findFirstRep(str) {
 //Time Complexity is O(n^2)
 
 console.log(findFirstRep(word));
+
+function findFirstReplicateCharacter(str) {
+  const table = {};
+  for (const char of str) {
+    if (table[char]) {
+      return char;
+    }
+    table[char] = 1;
+  }
+}
+
+//Time Complexity is O(n)
+
+console.log(findFirstReplicateCharacter(word));
