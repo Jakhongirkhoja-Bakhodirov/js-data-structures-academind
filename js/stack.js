@@ -23,6 +23,18 @@ class Stack {
 }
 
 const stack = new Stack();
+
+console.log("check is empty stack", stack.isEmpty());
+
 stack.push("Add first element");
 stack.push("Add second element");
-console.log(stack);
+
+stack.push("Data structures");
+
+stack.push("LIFO (Last In First Out");
+
+stack.pop();
+
+console.log("check is empty stack", stack.isEmpty());
+
+console.log("toArray", stack.toArray());
