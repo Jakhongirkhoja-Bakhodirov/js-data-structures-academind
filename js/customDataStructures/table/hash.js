@@ -22,3 +22,19 @@ class HashTable {
     return this.buckets[keyHash];
   }
 }
+
+const word = "academind";
+
+function findFirstReplicateCharacter(str) {
+  const table = new HashTable();
+  for (const char of str) {
+    if (table.get(char)) {
+      return char;
+    }
+    table.set(char, 1);
+  }
+}
+
+//Time Complexity is O(n)
+
+console.log(findFirstReplicateCharacter(word));
