@@ -1,7 +1,9 @@
 class HashTable {
   constructor() {
-    this.size = 1000;
-    this.buckets = Array(1000).fill(null);
+    this.size = 10;
+    this.buckets = Array(10)
+      .fill(null)
+      .map(() => []);
   }
 
   hash(key) {
@@ -14,12 +16,24 @@ class HashTable {
 
   set(key, value) {
     const keyHash = this.hash(key);
-    this.buckets[keyHash] = value;
+    const bucketArray = this.buckets[keyHash];
+    const storedElement = bucketArray.find((element) => {
+      return element.key === key;
+    });
+    if (storedElement) {
+      storedElement.val = value;
+    } else {
+      bucketArray.push({ key: key, val: value });
+    }
   }
 
   get(key) {
     const keyHash = this.hash(key);
-    return this.buckets[keyHash];
+    const bucketArray = this.buckets[keyHash];
+    const storedElement = bucketArray.find((element) => {
+      return element.key === key;
+    });
+    return storedElement;
   }
 
   showInfo() {
@@ -45,20 +59,23 @@ for (const char of "c++ data structures") {
   table.set(char, char);
 }
 
-table.showInfo();
+// table.showInfo();
 
-// const word = "academind";
+const word = "academind";
 
-// function findFirstReplicateCharacter(str) {
-//   const table = new HashTable();
-//   for (const char of str) {
-//     if (table.get(char)) {
-//       return char;
-//     }
-//     table.set(char, 1);
-//   }
-// }
+function findFirstReplicateCharacter(str) {
+  const table = new HashTable();
+  for (const char of str) {
+    if (table.get(char)) {
+      return char;
+    }
+    table.set(char, 1);
+  }
+}
 
-// //Time Complexity is O(n)
+//Time Complexity is O(n)
 
-// console.log(findFirstReplicateCharacter(word));
+console.log(findFirstReplicateCharacter(word));
+
+
+console.log(table.get('d'));
