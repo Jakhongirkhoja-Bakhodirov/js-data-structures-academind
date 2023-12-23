@@ -77,5 +77,4 @@ function findFirstReplicateCharacter(str) {
 
 console.log(findFirstReplicateCharacter(word));
 
-
-console.log(table.get('d'));
+console.log(table.get("d"));
