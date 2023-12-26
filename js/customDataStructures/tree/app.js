@@ -6,9 +6,28 @@ class Node {
   }
 
   addNode(value) {
-    const node = new Node(value, this);
-    this.children.push(node);
-    return { node: node, index: this.children.length - 1 };
+    const segments = value.split("/");
+    
+    if (segments.length === 0) {
+      return;
+    }
+    if (segments.length === 1) {
+      const node = new Node(segments[0], this);
+      this.children.push(node);
+      return { node: node, index: this.children.length - 1 };
+    }
+
+    const existingChildNode = this.children.find(
+      (child) => child.value === segments[0]
+    );
+    if (existingChildNode) {
+      existingChildNode.addNode(segments.slice(1).join("/"));
+    } else {
+      const node = new Node(segments[0], this);
+      node.addNode(segments.slice(1).join("/"));
+      this.children.push(node);
+      return { node: node, index: this.children.length - 1 };
+    }
   }
 
   removeNode(index) {
@@ -20,16 +39,20 @@ class Tree {
   constructor(rootValue) {
     this.root = new Node(rootValue);
   }
+
+  add(path) {
+    this.root.addNode(path);
+  }
+
+  remove(path) {}
 }
 
 const fileSystem = new Tree("/");
 
-// console.log(fileSystem.root);
-
-const documentsNodeData = fileSystem.root.addNode("/documents");
-const gamesNodeData = fileSystem.root.addNode("/games");
-
-documentsNodeData.node.addNode("file.txt");
-gamesNodeData.node.addNode("code.exe");
+fileSystem.add("documents/personal/doc.txt");
+fileSystem.add("documents/personal/image.jpg");
+fileSystem.add("programming/php/index.php");
+fileSystem.add("programming/js/app.js");
+fileSystem.add("books/business/zero to one.pdf");
 
 console.log(fileSystem);
