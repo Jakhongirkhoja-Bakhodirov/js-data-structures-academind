@@ -64,10 +64,24 @@ class Node {
 
   find(value) {
     //Depth-first
+    // for (const child of this.children) {
+    //   if (child.value === value) {
+    //     return child;
+    //   }
+    //   const nestedChildNode = child.find(value);
+    //   if (nestedChildNode) {
+    //     return nestedChildNode;
+    //   }
+    // }
+
+    // Breadth-first
     for (const child of this.children) {
       if (child.value === value) {
         return child;
       }
+    }
+
+    for (const child of this.children) {
       const nestedChildNode = child.find(value);
       if (nestedChildNode) {
         return nestedChildNode;
@@ -109,8 +123,8 @@ fileSystem.remove("documents/personal/doc.txt");
 fileSystem.remove("documents/personal/image.jpg");
 // fileSystem.remove("documents/personal/doc2.txt");
 
-const jsNode = fileSystem.find("business");
+const result = fileSystem.find("php");
 
-console.log(jsNode);
+console.log(result);
 
 // console.log(fileSystem);
