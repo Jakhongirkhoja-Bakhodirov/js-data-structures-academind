@@ -61,6 +61,19 @@ class Node {
       existingChildNode.removeNode(segments.slice(1).join("/"));
     }
   }
+
+  find(value) {
+    //Depth-first
+    for (const child of this.children) {
+      if (child.value === value) {
+        return child;
+      }
+      const nestedChildNode = child.find(value);
+      if (nestedChildNode) {
+        return nestedChildNode;
+      }
+    }
+  }
 }
 
 class Tree {
@@ -74,6 +87,13 @@ class Tree {
 
   remove(path) {
     this.root.removeNode(path);
+  }
+
+  find(value) {
+    if (this.root.value === value) {
+      return this.root;
+    }
+    return this.root.find(value);
   }
 }
 
@@ -89,4 +109,8 @@ fileSystem.remove("documents/personal/doc.txt");
 fileSystem.remove("documents/personal/image.jpg");
 // fileSystem.remove("documents/personal/doc2.txt");
 
-console.log(fileSystem);
+const jsNode = fileSystem.find("business");
+
+console.log(jsNode);
+
+// console.log(fileSystem);
