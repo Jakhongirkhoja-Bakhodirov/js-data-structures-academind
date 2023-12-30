@@ -22,6 +22,18 @@ class Node {
       return;
     }
   }
+
+  find(value) {
+    if (this.value === value) {
+      return this;
+    }
+    if (this.value < value && this.right) {
+      this.right.find(value);
+    }
+    if (this.value > value && this.left) {
+      this.left.find(value);
+    }
+  }
 }
 
 class Tree {
@@ -33,7 +45,24 @@ class Tree {
     this.root.add(value);
   }
 
-  remove(value) {}
+  find(value) {
+    return this.root.find(value);
+  }
 
-  find(value) {}
+  remove(value) {}
 }
+
+const tree = new Tree();
+tree.add(10);
+tree.add(5);
+tree.add(2);
+tree.add(6);
+tree.add(20);
+tree.add(25);
+tree.add(39);
+
+console.log(tree);
+
+console.log(tree.find(6));
+console.log(tree.find(7));
+console.log(tree.find(39));
