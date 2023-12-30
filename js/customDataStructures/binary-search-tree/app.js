@@ -11,12 +11,20 @@ class Node {
       return;
     }
     if (this.value < value) {
+      if (this.right) {
+        this.right.add(value);
+        return;
+      }
       const newNode = new Node(value);
       this.right = newNode;
       return;
     }
 
     if (this.value > value) {
+      if (this.left) {
+        this.left.add(value);
+        return;
+      }
       const newNode = new Node(value);
       this.left = newNode;
       return;
@@ -28,10 +36,10 @@ class Node {
       return this;
     }
     if (this.value < value && this.right) {
-      this.right.find(value);
+      return this.right.find(value);
     }
     if (this.value > value && this.left) {
-      this.left.find(value);
+      return this.left.find(value);
     }
   }
 }
@@ -63,6 +71,6 @@ tree.add(39);
 
 console.log(tree);
 
-console.log(tree.find(6));
+console.log(tree.find(5));
 console.log(tree.find(7));
 console.log(tree.find(39));
