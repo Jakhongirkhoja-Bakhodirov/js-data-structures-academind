@@ -53,9 +53,19 @@ class Node {
       throw new Error("Could not find node with that value");
     }
 
+    // remove leaf node that no children
     if (!identifiedNode.right && !identifiedNode.left) {
       const identifiedParent = identifiedNode.parent;
       identifiedParent.removeChild(identifiedNode);
+      return;  
+    }
+
+    if (identifiedNode.right && identifiedNode.left) {
+    } else {
+      const childNode = identifiedNode.left || identifiedNode.right;
+      identifiedNode.left = childNode.left;
+      identifiedNode.right = childNode.right;
+      identifiedNode.value = childNode.value;
     }
   }
 
@@ -97,11 +107,13 @@ tree.add(2);
 tree.add(6);
 tree.add(20);
 tree.add(25);
+tree.add(23);
+tree.add(28);
 tree.add(39);
 
 tree.remove(39);
+tree.remove(20);
 console.log(tree);
-
 
 console.log(tree.find(5));
 console.log(tree.find(7));
